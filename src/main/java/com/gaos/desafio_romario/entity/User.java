@@ -1,32 +1,26 @@
 package com.gaos.desafio_romario.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Table(name="todos")
-@Setter
+@Table(name = "users")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Todo {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
     private String nome;
-    @NotBlank
-    private String descricao;
-    private boolean realizado;
-    private int prioridade;
+    private int idade;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
+    @OneToMany(mappedBy = "user")
+    private List<Todo> todos;
 }

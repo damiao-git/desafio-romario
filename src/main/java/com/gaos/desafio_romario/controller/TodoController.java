@@ -6,11 +6,12 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/todos")
 public class TodoController {
-    private TodoService todoService;
+    private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
@@ -24,6 +25,11 @@ public class TodoController {
     @GetMapping
     public List<Todo> list(){
         return todoService.list();
+    }
+
+    @GetMapping("{id}")
+    public Optional<Todo> findById(@PathVariable("id") Long id){
+        return todoService.findById(id);
     }
 
     @PutMapping
