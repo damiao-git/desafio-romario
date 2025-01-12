@@ -26,6 +26,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.findById(id));
     }
 
+    @GetMapping("/findByNome")
+    public ResponseEntity<List<User>> findByNome(@RequestParam String nome){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findByNome(nome));
+    }
+
     @PostMapping
     public ResponseEntity<List<User>> create(@RequestBody User user){
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(user));

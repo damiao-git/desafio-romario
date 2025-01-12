@@ -1,6 +1,7 @@
 package com.gaos.desafio_romario;
 
 import com.gaos.desafio_romario.entity.Todo;
+import com.gaos.desafio_romario.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,8 @@ class DesafioRomarioApplicationTests {
 
 	@Test
 	void testCreateTodoSuccess() {
-		var todo = new Todo("todo 1", "desc todo 1", true, 1);
+		var user = new User("Damiao", 28);
+		var todo = new Todo("todo 1", "desc todo 1", true, 1, user);
 
 		webTestClient.post()
 				.uri("/todos")
@@ -35,7 +37,7 @@ class DesafioRomarioApplicationTests {
 				.post()
 				.uri("/todos")
 				.bodyValue(
-						new Todo("", "", false, 0))
+						new Todo("", "", false, 0, new User("damiao", 28)))
 				.exchange()
 				.expectStatus().isBadRequest();
 

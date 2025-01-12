@@ -16,12 +16,14 @@ public class UserService {
     public List<User> list(){
         return userRepository.findAll();
     }
-    User user = new User();
 
     public Optional<User> findById(long id){
         return userRepository.findById(id);
     }
 
+    public List<User> findByNome(String nome){
+        return userRepository.findByNome(nome);
+    }
     public List<User> create(User user){
         userRepository.save(user);
         return list();

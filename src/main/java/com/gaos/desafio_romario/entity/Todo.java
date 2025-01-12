@@ -3,6 +3,7 @@ package com.gaos.desafio_romario.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+
 @Entity
 @Table(name="todos")
 public class Todo {
@@ -24,8 +25,7 @@ public class Todo {
     public Todo() {
     }
 
-    public Todo(Long id, String nome, String descricao, boolean realizado, int prioridade, User user) {
-        this.id = id;
+    public Todo(String nome, String descricao, boolean realizado, int prioridade, User user) {
         this.nome = nome;
         this.descricao = descricao;
         this.realizado = realizado;
